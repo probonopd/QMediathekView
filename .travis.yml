@@ -1,18 +1,14 @@
 language: cpp
-compiler: gcc
+ compiler: gcc
+  dist: xenial
 
-dist: trusty
-addons:
-  apt:
-    sources:
-    - sourceline: 'ppa:beineri/opt-qt593-trusty'
-    packages:
-    - libboost1.55-dev
-    - qt59base
-    - qt59svg
+ addons:
+   apt:
+     packages:
+     - libboost-dev
+     - qt5-default
 
 script:
-- . /opt/qt*/bin/qt*-env.sh
 - qmake
 - make -j`nproc`
 - make INSTALL_ROOT=appdir install
